@@ -22,8 +22,15 @@ def login_page(request):
             login(request, user)
             return redirect('index')
 
+        else:
+            messages.info(request, 'Username or password is incorrect')
+
     context = {}
     return render(request,'login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
 
 
 def register(request):
