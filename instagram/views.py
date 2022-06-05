@@ -4,12 +4,27 @@ from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib import messages
 
+from django.contrib.auth import authenticate, login, logout
+
 from .forms import CreateUserForm
 from .models import *
 
 # Create your views here.
-def login(request):
-    return render(request,'login.html')
+def login_page(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+
+    context = {}
+    return render(request,'login.html', context)
+
 
 def register(request):
     form = CreateUserForm()
@@ -25,3 +40,7 @@ def register(request):
 
     context = {'form': form}
     return render(request,'register.html', context)
+
+def index(request):
+    return render(request,'index.html')
+
