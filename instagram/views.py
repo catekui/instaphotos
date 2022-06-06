@@ -38,7 +38,7 @@ def logoutUser(request):
 
 
 def register(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('index')
     else:
         form = CreateUserForm()
@@ -60,3 +60,8 @@ def register(request):
 def index(request):
     return render(request,'index.html')
 
+
+
+def profile(request):
+    
+    return render(request,'profile.html')
