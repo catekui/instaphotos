@@ -15,13 +15,14 @@
 </head>
 
 <body>
+    {% load static %}
 
     <div class="row mt-4">
         <div class="col-md-3" style="border-right:2px solid black">
              {% if profile.profile_photo %}
                     <img style="height:30vh" src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
                     {%else%}
-                    <img style="height:30vh" src="static/img/insta.jpeg"
+                    <img style="height:30vh" src="static/images/insta2.jpg"
                         class="card-img-top" alt="My profile picture">
                     {% endif %}
                     <div class="card-body text-center">
