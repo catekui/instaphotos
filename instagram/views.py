@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from .models import *
 
+
+
 # Create your views here.
 def login_page(request):
     if request.user.is_authenticated:
@@ -65,3 +67,4 @@ def index(request):
 def profile(request):
     
     return render(request,'profile.html')
+
