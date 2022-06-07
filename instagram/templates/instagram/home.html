@@ -1,0 +1,77 @@
+
+{% extends 'instagram/base.html'%}
+
+{% block content %} {{block.super}}
+<br> <br>
+<div class="container ">
+  <div class="row">
+    <div class="col-md-8">
+      {% for posts in posts%}
+      <div class="card ml-5 mb-4">
+        <div class="name" style="display: flex; ">
+          <div>
+            {% comment %} <a href="{% url 'user_profile' posts.user.id %}">
+              <img src="media">&nbsp;&nbsp;&nbsp;</a> {% endcomment %}
+          </div>
+          <div>
+            {% comment %} <a href="{% url 'user_profile' posts.user.id %}" style="color: black;"> {% endcomment %}
+              <p><b>{{ posts.user.username }}</b></p>
+            </a>
+          </div>
+        </div>
+        <div class="text-center mt-1">
+          <span>
+            <img src="{{posts.image.url}}" alt="" width="100%">
+            </a>
+          </span>
+        </div>
+
+
+        <form action="{% url 'like_post' %}" method='POST'>
+          {% csrf_token %}
+          <input type="hidden" name="image_id" value="{{posts.id}}">
+          {%if user not in posts.liked.all %}
+          <button class="btn-light" type="submit" style="border: none; margin-right: 63%;"><i
+              class="far fa-heart text-dark"></i> </button>
+          {% else %}
+          <button class="btn-light" type="submit" style="border: none; margin-right: 63%;"><i
+              class="far fa-heart text-danger"></i> </button>
+          {% endif %}
+        </form>
+        <div class="likes">
+          <strong>{{posts.liked.all.count}}Likes</strong>
+        </div>
+        <div class="caption">
+          <a href="url 'user.profile' posts.user.id" style="color: black;">
+            <p><b>{{ posts.user.username }}</b> &nbsp; {{posts.caption}}</p>
+          </a>
+        </div>
+
+
+        {% comment %} <form action="{% url 'comments' image_id=posts.id%}" class="comment-form com" id="commentform" method="POST"
+          enctype="multipart/form-data"> {% endcomment %}
+          {% csrf_token%}
+         
+          <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary login-btn" value="Post">
+          </div>
+          <input type="hidden" name="next" value="{{next}}">
+          <br>
+        </form>
+        <div class="comments">
+          <p>Comments:</p>
+          {% for comment in posts.saved_comments %}
+          <p> <span><strong>{{comment.user}}</strong></span>: {{comment.comment}}</p>
+
+          {% endfor %}
+        </div>
+        <div class="date text-muted" >
+          <strong>{{posts.posted_on}}</strong>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
