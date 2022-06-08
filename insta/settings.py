@@ -89,6 +89,8 @@ DATABASES = {
         'NAME': ('gallery'),
         'USER': ('moringa'),
         'PASSWORD':('1234'),
+        'HOST': config('DB_HOST'),
+        'PORT': (''),
     }
 }
 
