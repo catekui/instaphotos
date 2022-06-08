@@ -10,13 +10,13 @@ class ProfileTestClass(TestCase):
         """creation of profile for testing
         """
         user = User.objects.create(
-            username = 'nashlil',
-            first_name = 'lilian',
-            last_name = 'kanana')
+            username = 'moringa',
+            first_name = 'sweet',
+            last_name = 'cate')
         
         Profile.objects.create(
             bio = 'Back end developer',
-            profile_photo = 'media/profile_pics/pizzacart10-removebg-preview_edhHkdQ.png',
+            profile_photo = 'media/profile_pics/horse.jpeg',
             user_id = user.id
         )
 

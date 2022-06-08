@@ -9,9 +9,9 @@ class ImageTestCase(TestCase):
         """image creation
         """
         user = User.objects.create(
-            username = 'nashlil',
-            first_name = 'lilian',
-            last_name = 'kanana')
+            username = 'Moringa',
+            first_name = 'Sweet',
+            last_name = 'Cate')
         
         Image.objects.create(
             name="me",
@@ -29,13 +29,13 @@ class ImageTestCase(TestCase):
 class LikeTestCase(TestCase):
     def setUp(self):
          user = User.objects.create(
-            username = 'Lucy',
-            first_name = 'Mutanu',
-            last_name = 'Kioko')
+            username = 'Moringa',
+            first_name = 'Sweet',
+            last_name = 'Cate')
          
          Profile.objects.create(
             bio = 'me',
-            profile_photo = 'media/profile_pics/pizzacart10-removebg-preview_edhHkdQ.png',
+            profile_photo = 'media/profile_pics/horse.jpeg',
             user_id = user.id
         )
         
@@ -49,9 +49,9 @@ class LikeTestCase(TestCase):
 
 def test_image_id(self):
          user = User.objects.create(
-            username = 'nashlil',
-            first_name = 'lilian',
-            last_name = 'kanana')
+            username = 'Moringa',
+            first_name = 'Sweet',
+            last_name = 'Cate')
          
          Image.objects.create(
             name="me",
