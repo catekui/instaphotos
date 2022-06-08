@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config,Csv
 import os
 import django_heroku
 import dj_database_url
-from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'SECRET_KEY'
+SECRET_KEY = 'django-insecure-7ty-nf#3nl-7+acu5niz@@p*tr^sz$uj)%jc0+rxplq(#0z4qj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -146,7 +146,9 @@ STATICFILES_DIRS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+django_heroku.settings(locals()) 
 MEDIA_URL = '/media/'
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
@@ -156,7 +158,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
 
-django_heroku.settings(locals()) 
+
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL ='login'
